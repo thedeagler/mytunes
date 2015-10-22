@@ -13,10 +13,10 @@ var AppView = Backbone.View.extend({
     }, this);
 
     // Listen for changes to the song queue and update the song queue view
-    this.model.on('songEnqueued', function(model) {
-      // debugger;
+    this.model.get('songQueue').on('add remove', function(model) {
       this.songQueueView.render();
-    },this)
+    },this);
+    
   },
 
   render: function() {
