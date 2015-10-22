@@ -24,7 +24,7 @@ var AppView = Backbone.View.extend({
   render: function() {
     var library = $('<div class="library col m8 s12"></div>').append($('<h4>Library</h4>'),this.libraryView.$el);
     
-    var player = $('<div class="player col s12"></div>').append(this.playerView.$el);
+    var player = $('<footer class="page-footer white container"></footer>').append(this.playerView.$el);
 
     var queue = $('<div class="queue col m4 s12"></div>').append($('<h4>Playlist</h4>'),this.songQueueView.$el);
 
@@ -36,6 +36,9 @@ var AppView = Backbone.View.extend({
   }
 
 });
+
+
+// <footer class="page-footer grey container"></footer>
 
 
 
