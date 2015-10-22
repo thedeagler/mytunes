@@ -3,7 +3,7 @@ var LibraryView = Backbone.View.extend({
 
   tagName: "table",
 
-  className: "bordered",
+  className: "bordered highlight",
 
   initialize: function() {
     this.render();

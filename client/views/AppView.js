@@ -22,13 +22,22 @@ var AppView = Backbone.View.extend({
   },
 
   render: function() {
-    return this.$el.html([
-      this.playerView.$el,
-      $('<h3>Queue</h3>'),
-      this.songQueueView.$el,
-      $('<h3>Library</h3>'),
-      this.libraryView.$el
-    ]);
+    var library = $('<div class="library col m8 s12"></div>').append($('<h4>Library</h4>'),this.libraryView.$el);
+    
+    var player = $('<div class="player col s12"></div>').append(this.playerView.$el);
+
+    var queue = $('<div class="queue col m4 s12"></div>').append($('<h4>Playlist</h4>'),this.songQueueView.$el);
+
+    //var playerQueue = $('<div class="playerQueue col m4 s12">').append(player,$('<h5>Playlist</h5>'),queue);
+
+    var row = $('<div class="row"></div>').append(player,queue,library);
+
+    return this.$el.html(row);
   }
 
 });
+
+
+
+
+
