@@ -11,17 +11,28 @@ var AppView = Backbone.View.extend({
     // change:currentSong - this is Backbone's way of allowing you to filter events to
     // ONLY receive change events for the specific property, 'currentSong'
     this.model.on('change:currentSong', function(model) {
-      this.playerView.setSong(model.get('currentSong'));
+      if(model.get('currentSong')) {
+        this.playerView.setSong(model.get('currentSong'));
+      }
     }, this);
 
     // Listen for changes to the song queue and update the song queue view
     this.model.get('songQueue').on('add remove', function(model) {
-      this.songQueueView.render();
+      if(model.get('url')!==undefined) {
+        this.songQueueView.render();
+      }
     },this);
+
+    // this.model.get('library').on('sync', function() {
+    //   console.log('trying to render ');
+    //   console.log(this.model.get('library'));
+    //   this.render();}
+    //   , this);
     
   },
 
   render: function() {
+
     var library = $('<div class="library col m8 s12"></div>').append($('<h4>Library</h4>'),this.libraryView.$el);
     
     var player = $('<footer class="page-footer white container"></footer>').append(this.playerView.$el);

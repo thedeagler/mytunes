@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <script src="https://connect.soundcloud.com/sdk/sdk-3.0.0.js"></script>
   </head>
   <body>
     <!-- Scripts may be placed anywhere on a page. But FYI, they block rendering of elements
@@ -14,6 +16,8 @@
     <script src="bower_components/jquery/jquery.min.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
     <script src="bower_components/backbone/backbone.js"></script>
+
+     <script src="env/config.js"></script>
     <!-- Data -->
     <script src="data/data.js"></script>
 
@@ -30,24 +34,42 @@
     <script src="views/SongQueueView.js"></script>
     <script src="views/SongQueueEntryView.js"></script>
     <script src="views/AppView.js"></script>
+    <script src="views/NavView.js"></script>
 
     <link href="styles.css" rel="stylesheet"></link>    
     
-    <nav>
-      <div class="nav-wrapper container">
-        <a href="#" class="brand-logo">myTunes</a>
-      </div>
-    </nav>
+<!--     <div class="navbar-fixed">
+        <nav>
+          <div class="nav-wrapper container">
+            <a href="#" class="brand-logo">myTunes</a>
+            <form class="right">
+              <div class="input-field">
+                <input id="search" type="search" required>
+                <label for="search"><i class="material-icons">search</i></label>
+                <i class="material-icons">close</i>
+              </div>
+            </form>
+          </div>
+        </nav>
+    </div> -->
 
     <script>
       $(function() {
         // set up model objects
         var library = new Songs(songData);
+
+        // var library = new Songs();
+
+        // library.getMessages();
+
         var app = new AppModel({library: library});
 
         // build a view for the top level of the whole app
         var appView = new AppView({model: app});
 
+        var navView = new NavView({collection: library});
+
+        $('body').append(navView.render());
         // put the view onto the screen
         $('body').append(appView.render());
       });
