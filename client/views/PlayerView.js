@@ -2,6 +2,7 @@
 var PlayerView = Backbone.View.extend({
   // Visualizer aspect
   audio: null,
+  source: null,
   context: null,
   analyser: null,
   bufferLength: null,
@@ -26,7 +27,7 @@ var PlayerView = Backbone.View.extend({
       alert('Web Audio API is not supported in this browser');
     }
 
-    this.resetAudio();
+    // this.resetAudio();
 
     // Initialize canvas for visualizer
     this.canvas = $('.visualizer')[0];
@@ -49,20 +50,24 @@ var PlayerView = Backbone.View.extend({
     // Set the player song
     this.model = song;
     // Set the visualizer source
-    this.resetAudio();
-    if(~~!!!!this.model) {
-      this.audio.src = this.model.get('url');
-    }
+    // this.resetAudio();
+    // if(~~!!!!this.model) {
+    //   this.audio.src = this.model.get('url');
+    // }
+    // $('body').append(this.audio);
     this.visualize();
     this.render();
   },
 
   visualize: function() {
+    if(this.source) {
+      this.source.disconnect();
+    }
     // Connect audio nodes
-    var source = null;
-    source = this.context.createMediaElementSource(this.audio);
-    source.connect(this.analyser);
-    // this.analyser.connect(this.context.destination);
+    // source = this.context.createMediaElementSource(this.audio);
+    this.source = this.context.createMediaElementSource(this.el);
+    this.source.connect(this.analyser);
+    this.analyser.connect(this.context.destination);
 
     // Analyzer properties
     this.analyser.fftSize = 2048;

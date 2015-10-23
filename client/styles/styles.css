@@ -17,3 +17,12 @@ footer {
   width: 100%;
   height: 100%;
 }
+
+.library {
+  height: 400px;
+  overflow-y: scroll;
+}
+
+.queue {
+  overflow-y: scroll; 
+}
