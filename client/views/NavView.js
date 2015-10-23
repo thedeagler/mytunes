@@ -4,7 +4,7 @@ var NavView = Backbone.View.extend({
   // HTML5 (native) audio tag is being used
   // see: https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_HTML5_audio_and_video
   el: '<div class="navbar-fixed">\
-          <nav>\
+          <nav class="transparent">\
             <div class="nav-wrapper container">\
               <a href="#" class="brand-logo">myTunes</a>\
               <form class="searchForm right">\
@@ -16,6 +16,7 @@ var NavView = Backbone.View.extend({
               </form>\
             </div>\
           </nav>\
+          <canvas class="visualizer">hello i am visualizer</canvas>\
       </div>',
 
   events: {

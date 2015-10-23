@@ -11,3 +11,18 @@ footer {
   bottom: 0;
   width: 100%;
 }
+
+.visualizer {
+  background-color: mediumaquamarine;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  position: relative;
+}
+
+
+.searchForm {
+  z-index: 10;
+  position: relative;
+  float: top;
+}

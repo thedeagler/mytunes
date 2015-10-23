@@ -24,12 +24,22 @@ var AppModel = Backbone.Model.extend({
 
     params.library.on('play', function(song) {
       
-      this.set('currentSong', new SongModel());
+      this.set('currentSong', null);
     
       this.set('currentSong', song);
-    
+      // Not sure what this is here for
+      // this.get('songQueue').remove(song);
+
     }, this);
 
+    // Moved to somewhere else (songQueueModel)
+    // this.get('songQueue').on('add', function(song) {
+
+    //   if(this.get('currentSong').get('url') === undefined) {
+    //     this.get('songQueue').playFirst();
+    //   }
+
+    // }, this);
   }
 
 });

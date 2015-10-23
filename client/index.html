@@ -28,36 +28,29 @@
     <script src="models/AppModel.js"></script>
 
     <!-- Views -->
+    <script src="views/NavView.js"></script>
     <script src="views/PlayerView.js"></script>
     <script src="views/LibraryView.js"></script>
     <script src="views/LibraryEntryView.js"></script>
     <script src="views/SongQueueView.js"></script>
     <script src="views/SongQueueEntryView.js"></script>
     <script src="views/AppView.js"></script>
-    <script src="views/NavView.js"></script>
 
-    <link href="styles.css" rel="stylesheet"></link>    
-    
-<!--     <div class="navbar-fixed">
-        <nav>
-          <div class="nav-wrapper container">
-            <a href="#" class="brand-logo">myTunes</a>
-            <form class="right">
-              <div class="input-field">
-                <input id="search" type="search" required>
-                <label for="search"><i class="material-icons">search</i></label>
-                <i class="material-icons">close</i>
-              </div>
-            </form>
-          </div>
-        </nav>
-    </div> -->
+    <link href="styles/styles.css" rel="stylesheet"></link>    
+    <!-- <script src="views/VisualizerView.js"></script> -->
+        <!-- ********************Fallback nav bar********************* -->
+<!--     <nav>
+      <a href="#" class="brand-logo">myTunes</a>
+      <canvas class="visualizer">hello i am visualizer</canvas>
+    </nav> -->
 
     <script>
       $(function() {
         // set up model objects
         var library = new Songs(songData);
 
+        var navView = new NavView({collection: library});
+        $('body').append(navView.render());
         // var library = new Songs();
 
         // library.getMessages();
@@ -67,15 +60,12 @@
         // build a view for the top level of the whole app
         var appView = new AppView({model: app});
 
-        var navView = new NavView({collection: library});
 
-        $('body').append(navView.render());
         // put the view onto the screen
         $('body').append(appView.render());
       });
     </script>
     <!-- Hacking engage -->
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
   </body>
 </html>
